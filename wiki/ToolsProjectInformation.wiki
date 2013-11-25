@@ -26,7 +26,7 @@ Liste de l'ensemble des applications, logiciels, librairie utile au projet
 
 -NUnit
 
--GhostDoc
+-Ghostdoc
 
 *Données :*
 
