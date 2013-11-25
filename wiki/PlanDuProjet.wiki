@@ -1,4 +1,4 @@
-#summary Plan du projet en vue de la soutenance
+#summary Plan du projet
 #labels Document,Analyse,Présentation,PowerPoint,Plan
 
 = Introduction =
