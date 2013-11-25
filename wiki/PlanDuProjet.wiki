@@ -3,19 +3,29 @@
 
 = Introduction =
 
-Plan du projet/PowerPoint/soutenance.
+Plan du projet/PowerPoint
 
 = Details =
 
 -Formaliser l’objectif -> Réaliser Cahier des charges
+
 -Planification (Réflexion sur comment on va réaliser le projet, méthodes agiles, gestion des parties créatives)
+
 -Création du Use Case 
+
 -Réalisation des maquettes (scénario du jeu) et Game design document
+
 -Création du MCD (persistance des scores des joueurs, des infos du joueurs..) -> sauvegarde du contenu des propriétés d’une instance d’une classe métier
+
 -Création du Diagramme de classe (penser à distinguer classe metier/classe technique)
+
 -Programmation 
   Choix technique, Pattern utilisé (MVC..), Bonne pratique, Intégrer de l’agile(sprint), alterner développement des tests et du programme.
+
 -Phase de test (test, métriques …)
+
 -Génération de la documentation
+
 -Mise en production 
+
 -Retour sur Investissement (ROI) : Calculer sur sa proximité avec le coeur de métier de l’éditeur de jeu, sa valeur ajoutée fonctionnelle et son périmètre.
