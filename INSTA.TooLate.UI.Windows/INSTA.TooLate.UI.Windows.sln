@@ -5,62 +5,36 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "INSTA.TooLate.UI.Windows", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "INSTA.TooLate.UI.WindowsContent", "INSTA.TooLate.UI.Windows\INSTA.TooLate.UI.WindowsContent\INSTA.TooLate.UI.WindowsContent.contentproj", "{5D3BD858-22DB-4A9A-A814-0907E9DEE087}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "INSTA.TooLate.BLL", "INSTA.TooLate.BLL\INSTA.TooLate.BLL\INSTA.TooLate.BLL.csproj", "{1F9855F7-EF4A-4F25-8DEE-05B0BB6F4013}"
-EndProject
-Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "INSTA.TooLate.BLLContent", "INSTA.TooLate.BLL\INSTA.TooLate.BLLContent\INSTA.TooLate.BLLContent.contentproj", "{177C63D4-4AD5-44C0-884D-212F22CE7D65}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "INSTA.TooLate.DAL", "INSTA.TooLate.DAL\INSTA.TooLate.DAL\INSTA.TooLate.DAL.csproj", "{A164514F-58D8-4490-B5F6-CAFA85B273FA}"
-EndProject
-Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "INSTA.TooLate.DALContent", "INSTA.TooLate.DAL\INSTA.TooLate.DALContent\INSTA.TooLate.DALContent.contentproj", "{41A59300-1D12-4AE4-B8E6-90A1DDC11573}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "INSTA.TooLate.BLL.Test", "INSTA.TooLate.BLL.Test\INSTA.TooLate.BLL.Test\INSTA.TooLate.BLL.Test.csproj", "{4EA97479-65F0-4362-9A29-39BB46919292}"
-EndProject
-Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "INSTA.TooLate.BLL.TestContent", "INSTA.TooLate.BLL.Test\INSTA.TooLate.BLL.TestContent\INSTA.TooLate.BLL.TestContent.contentproj", "{A6907AF0-6C51-4D54-A2E3-87839B8B032E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "INSTA.TooLate.DAL.Test", "INSTA.TooLate.DAL.Test\INSTA.TooLate.DAL.Test\INSTA.TooLate.DAL.Test.csproj", "{4994F7BC-8F20-4590-B74D-0E1CDCB448F0}"
-EndProject
-Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "INSTA.TooLate.DAL.TestContent", "INSTA.TooLate.DAL.Test\INSTA.TooLate.DAL.TestContent\INSTA.TooLate.DAL.TestContent.contentproj", "{E678D2C7-5210-41E5-928E-7890C484D9FB}"
-EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
 		Manager = AnkhSVN - Subversion Support for Visual Studio
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
 		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8DAD5F7C-0460-4105-AE62-E3903C4CFA7B}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{8DAD5F7C-0460-4105-AE62-E3903C4CFA7B}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{8DAD5F7C-0460-4105-AE62-E3903C4CFA7B}.Debug|Mixed Platforms.Build.0 = Debug|x86
 		{8DAD5F7C-0460-4105-AE62-E3903C4CFA7B}.Debug|x86.ActiveCfg = Debug|x86
 		{8DAD5F7C-0460-4105-AE62-E3903C4CFA7B}.Debug|x86.Build.0 = Debug|x86
+		{8DAD5F7C-0460-4105-AE62-E3903C4CFA7B}.Release|Any CPU.ActiveCfg = Release|x86
+		{8DAD5F7C-0460-4105-AE62-E3903C4CFA7B}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{8DAD5F7C-0460-4105-AE62-E3903C4CFA7B}.Release|Mixed Platforms.Build.0 = Release|x86
 		{8DAD5F7C-0460-4105-AE62-E3903C4CFA7B}.Release|x86.ActiveCfg = Release|x86
 		{8DAD5F7C-0460-4105-AE62-E3903C4CFA7B}.Release|x86.Build.0 = Release|x86
+		{5D3BD858-22DB-4A9A-A814-0907E9DEE087}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{5D3BD858-22DB-4A9A-A814-0907E9DEE087}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
 		{5D3BD858-22DB-4A9A-A814-0907E9DEE087}.Debug|x86.ActiveCfg = Debug|x86
+		{5D3BD858-22DB-4A9A-A814-0907E9DEE087}.Release|Any CPU.ActiveCfg = Release|x86
+		{5D3BD858-22DB-4A9A-A814-0907E9DEE087}.Release|Mixed Platforms.ActiveCfg = Release|x86
 		{5D3BD858-22DB-4A9A-A814-0907E9DEE087}.Release|x86.ActiveCfg = Release|x86
-		{1F9855F7-EF4A-4F25-8DEE-05B0BB6F4013}.Debug|x86.ActiveCfg = Debug|x86
-		{1F9855F7-EF4A-4F25-8DEE-05B0BB6F4013}.Debug|x86.Build.0 = Debug|x86
-		{1F9855F7-EF4A-4F25-8DEE-05B0BB6F4013}.Release|x86.ActiveCfg = Release|x86
-		{1F9855F7-EF4A-4F25-8DEE-05B0BB6F4013}.Release|x86.Build.0 = Release|x86
-		{177C63D4-4AD5-44C0-884D-212F22CE7D65}.Debug|x86.ActiveCfg = Debug|x86
-		{177C63D4-4AD5-44C0-884D-212F22CE7D65}.Release|x86.ActiveCfg = Release|x86
-		{A164514F-58D8-4490-B5F6-CAFA85B273FA}.Debug|x86.ActiveCfg = Debug|x86
-		{A164514F-58D8-4490-B5F6-CAFA85B273FA}.Debug|x86.Build.0 = Debug|x86
-		{A164514F-58D8-4490-B5F6-CAFA85B273FA}.Release|x86.ActiveCfg = Release|x86
-		{A164514F-58D8-4490-B5F6-CAFA85B273FA}.Release|x86.Build.0 = Release|x86
-		{41A59300-1D12-4AE4-B8E6-90A1DDC11573}.Debug|x86.ActiveCfg = Debug|x86
-		{41A59300-1D12-4AE4-B8E6-90A1DDC11573}.Release|x86.ActiveCfg = Release|x86
-		{4EA97479-65F0-4362-9A29-39BB46919292}.Debug|x86.ActiveCfg = Debug|x86
-		{4EA97479-65F0-4362-9A29-39BB46919292}.Debug|x86.Build.0 = Debug|x86
-		{4EA97479-65F0-4362-9A29-39BB46919292}.Release|x86.ActiveCfg = Release|x86
-		{4EA97479-65F0-4362-9A29-39BB46919292}.Release|x86.Build.0 = Release|x86
-		{A6907AF0-6C51-4D54-A2E3-87839B8B032E}.Debug|x86.ActiveCfg = Debug|x86
-		{A6907AF0-6C51-4D54-A2E3-87839B8B032E}.Release|x86.ActiveCfg = Release|x86
-		{4994F7BC-8F20-4590-B74D-0E1CDCB448F0}.Debug|x86.ActiveCfg = Debug|x86
-		{4994F7BC-8F20-4590-B74D-0E1CDCB448F0}.Debug|x86.Build.0 = Debug|x86
-		{4994F7BC-8F20-4590-B74D-0E1CDCB448F0}.Release|x86.ActiveCfg = Release|x86
-		{4994F7BC-8F20-4590-B74D-0E1CDCB448F0}.Release|x86.Build.0 = Release|x86
-		{E678D2C7-5210-41E5-928E-7890C484D9FB}.Debug|x86.ActiveCfg = Debug|x86
-		{E678D2C7-5210-41E5-928E-7890C484D9FB}.Release|x86.ActiveCfg = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
