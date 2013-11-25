@@ -1,4 +1,4 @@
-#summary One-sentence summary of this page.
+#summary Plan du projet en vue de la soutenance
 #labels Document,Analyse,Présentation,PowerPoint,Plan
 
 = Introduction =
