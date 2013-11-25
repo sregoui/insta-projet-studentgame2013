@@ -14,6 +14,8 @@ Liste de l'ensemble des applications, logiciels, librairie utile au projet
 
 -Trello
 
+-Dropbox
+
 -SVN
 
 -Power AMC
