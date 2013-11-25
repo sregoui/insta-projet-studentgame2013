@@ -1,0 +1,33 @@
+#summary Outils utile au projet
+#labels Outils,Logiciels,Utilitaire
+
+= Introduction =
+
+Liste de l'ensemble des applications, logiciels, librairie utile au projet
+
+
+= Détails =
+
+*Gestion de projet :*
+
+-Google code
+
+-Trello
+
+-SVN
+
+-Power AMC
+
+*Visual Studio :*
+
+-XNA
+
+-Re sharper
+
+-NUnit
+
+-GhostDoc
+
+*Données :*
+
+-SQLServer 2008
