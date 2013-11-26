@@ -8,6 +8,10 @@ Liens vers les documents
 
 = Details =
 
+Diagramme Cas d'utilisation
+
+https://www.dropbox.com/s/eki55af4y8tu6f0/DiagrammeCasUtilisation_1.pdf
+
 Diagramme de classe
 
 https://www.dropbox.com/s/r38cmwtc1qfg6dc/DiagrammeClasses_1.pdf
