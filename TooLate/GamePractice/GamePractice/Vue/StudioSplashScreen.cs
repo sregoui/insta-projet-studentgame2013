@@ -64,9 +64,9 @@ namespace TooLate.Screens
         /// Initializes a new instance of the StudioSplashScreen class.
         /// </summary>
         /// <param name="game">The game that will use this component</param>
-        public StudioSplashScreen(Game game, Game1 g1) : base(game)
+        public StudioSplashScreen(Game1 game) : base(game)
         {
-            _game = g1;
+            _game = game;
         }
 
         #endregion

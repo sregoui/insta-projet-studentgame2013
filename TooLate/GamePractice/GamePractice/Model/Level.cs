@@ -5,7 +5,7 @@ using System.Text;
 
 namespace TooLate.Model
 {
-    class Level
+    public class Level
     {
     }
 }

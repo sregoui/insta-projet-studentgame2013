@@ -78,7 +78,7 @@ namespace TooLate
 
             _transition = false;
 
-            Components.Add(new StudioSplashScreen(this, this));
+            Components.Add(new StudioSplashScreen(this));
 
             _scroller = new ParallaxSideScroller(this, false, true);
 
