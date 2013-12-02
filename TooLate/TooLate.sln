@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TooLate", "GamePractice\GamePractice\TooLate.csproj", "{6596CA1C-504E-4756-B401-339EF49740AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TooLateContent", "GamePractice\GamePracticeContent\TooLateContent.contentproj", "{0ABD89CB-7483-4D48-861C-3D0860944E10}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TooLateLibrary", "GamePracticeLibrary\TooLateLibrary.csproj", "{BA0436B5-F636-4390-A2B5-6A733E6135E2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6596CA1C-504E-4756-B401-339EF49740AB}.Debug|x86.ActiveCfg = Debug|x86
+		{6596CA1C-504E-4756-B401-339EF49740AB}.Debug|x86.Build.0 = Debug|x86
+		{6596CA1C-504E-4756-B401-339EF49740AB}.Release|x86.ActiveCfg = Release|x86
+		{6596CA1C-504E-4756-B401-339EF49740AB}.Release|x86.Build.0 = Release|x86
+		{0ABD89CB-7483-4D48-861C-3D0860944E10}.Debug|x86.ActiveCfg = Debug|x86
+		{0ABD89CB-7483-4D48-861C-3D0860944E10}.Release|x86.ActiveCfg = Release|x86
+		{BA0436B5-F636-4390-A2B5-6A733E6135E2}.Debug|x86.ActiveCfg = Debug|x86
+		{BA0436B5-F636-4390-A2B5-6A733E6135E2}.Debug|x86.Build.0 = Debug|x86
+		{BA0436B5-F636-4390-A2B5-6A733E6135E2}.Release|x86.ActiveCfg = Release|x86
+		{BA0436B5-F636-4390-A2B5-6A733E6135E2}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
