@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TooLate.Model;
 using TooLate.Screens;
 using TooLateLibrary.Graphics;
 using TooLateLibrary.Timers;
@@ -30,6 +31,8 @@ namespace TooLate
         private KeyboardState _keyboardState;
         private KeyboardState _oldKeyboardState;
         private MouseState _mouseState;
+
+        private Player _player;
 
         private ParallaxSideScroller _scroller;
 
@@ -79,7 +82,7 @@ namespace TooLate
             _transition = false;
 
             Components.Add(new StudioSplashScreen(this));
-
+            
             _scroller = new ParallaxSideScroller(this, false, true);
 
             _scroller.Add("Layers/Layer1");
@@ -165,6 +168,8 @@ namespace TooLate
 
                         // Add Scroller's component after clear.
                         Components.Add(_scroller);
+
+                        Components.Add(new Player(this));
 
                         // Disable transition
                         _transition = false;

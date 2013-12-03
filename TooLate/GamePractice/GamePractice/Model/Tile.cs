@@ -51,7 +51,5 @@ namespace TooLate.Model
             texture = t;
             collision = c;
         }
-
-
     }
 }
