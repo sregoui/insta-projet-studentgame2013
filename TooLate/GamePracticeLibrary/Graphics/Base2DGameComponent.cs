@@ -63,6 +63,5 @@ namespace TooLateLibrary.Graphics
         }
 
         #endregion
-
     }
 }

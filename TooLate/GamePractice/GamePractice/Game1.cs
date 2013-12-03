@@ -28,6 +28,7 @@ namespace TooLate
 
         private bool _transition;
 
+        private GamePadState _gamePadState;
         private KeyboardState _keyboardState;
         private KeyboardState _oldKeyboardState;
         private MouseState _mouseState;
@@ -132,16 +133,17 @@ namespace TooLate
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
+            _gamePadState = GamePad.GetState(PlayerIndex.One);
             _keyboardState = Keyboard.GetState();
             _mouseState = Mouse.GetState();
 
-            if (_keyboardState.IsKeyDown(Keys.Left))
+            if (_keyboardState.IsKeyDown(Keys.Left) || _gamePadState.IsButtonDown(Buttons.LeftThumbstickLeft) || _gamePadState.IsButtonDown(Buttons.DPadLeft))
             {
-                _scroller.MoveBy(new Vector2(10,0));
+                _scroller.MoveBy(new Vector2(14,0));
             }
-            else if (_keyboardState.IsKeyDown(Keys.Right))
+            else if (_keyboardState.IsKeyDown(Keys.Right) || _gamePadState.IsButtonDown(Buttons.LeftThumbstickRight) || _gamePadState.IsButtonDown(Buttons.DPadRight))
             {
-                _scroller.MoveBy(new Vector2(-10, 0));
+                _scroller.MoveBy(new Vector2(-14, 0));
             }
 
             // Switch between methods when the game state change.

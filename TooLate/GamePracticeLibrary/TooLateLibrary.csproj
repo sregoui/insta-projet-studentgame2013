@@ -61,6 +61,8 @@
   <ItemGroup>
     <Compile Include="Animation\ColorInterpolation.cs" />
     <Compile Include="Animation\Easing.cs" />
+    <Compile Include="Animation\SimpleAnimationDefinition.cs" />
+    <Compile Include="Animation\SimpleAnimationSprites.cs" />
     <Compile Include="Animation\Vector4Interpolation.cs" />
     <Compile Include="Animation\Vector3Interpolation.cs" />
     <Compile Include="Animation\Vector2Interpolation.cs" />

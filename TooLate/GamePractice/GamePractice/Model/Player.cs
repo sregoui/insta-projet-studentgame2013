@@ -24,6 +24,7 @@ namespace TooLate.Model
         private SimpleAnimationSprites _animationRunRight;
         private SimpleAnimationSprites _animationRunLeft;
 
+        private GamePadState _gamePadState;
         private KeyboardState _keyboardState;
         private KeyboardState _oldKeyboardState;
         private MouseState _mouseState;
@@ -129,18 +130,18 @@ namespace TooLate.Model
 
         public override void Update(GameTime gameTime)
         {
-
+            _gamePadState = GamePad.GetState(PlayerIndex.One);
             _keyboardState = Keyboard.GetState();
             _mouseState = Mouse.GetState();
 
             _oldKeyboardState = _keyboardState;
 
-            if (_keyboardState.IsKeyDown(Keys.Right))
+            if (_keyboardState.IsKeyDown(Keys.Right) || _gamePadState.IsButtonDown(Buttons.LeftThumbstickRight) || _gamePadState.IsButtonDown(Buttons.DPadRight))
             {
                 _direction = 0;
                 _animationRunRight.Update(gameTime);
             }
-            else if (_keyboardState.IsKeyDown(Keys.Left))
+            else if (_keyboardState.IsKeyDown(Keys.Left) || _gamePadState.IsButtonDown(Buttons.LeftThumbstickLeft) || _gamePadState.IsButtonDown(Buttons.DPadLeft))
             {
                 _direction = 1;
                 _animationRunLeft.Update(gameTime);
@@ -162,16 +163,17 @@ namespace TooLate.Model
 
         public override void Draw(GameTime gameTime)
         {
+            _gamePadState = GamePad.GetState(PlayerIndex.One);
             _keyboardState = Keyboard.GetState();
             _mouseState = Mouse.GetState();
 
             Renderer.Begin();
 
-            if (_keyboardState.IsKeyDown(Keys.Right))
+            if (_keyboardState.IsKeyDown(Keys.Right) || _gamePadState.IsButtonDown(Buttons.LeftThumbstickRight) || _gamePadState.IsButtonDown(Buttons.DPadRight))
             {
                 _animationRunRight.Draw(gameTime, false);
             }
-            else if (_keyboardState.IsKeyDown(Keys.Left))
+            else if (_keyboardState.IsKeyDown(Keys.Left) || _gamePadState.IsButtonDown(Buttons.LeftThumbstickLeft) || _gamePadState.IsButtonDown(Buttons.DPadLeft))
             {
                 _animationRunLeft.Draw(gameTime, false);
             }
