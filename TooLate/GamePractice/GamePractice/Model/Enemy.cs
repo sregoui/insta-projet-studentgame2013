@@ -7,5 +7,7 @@ namespace TooLate.Model
 {
     public class Enemy
     {
+
+
     }
 }
