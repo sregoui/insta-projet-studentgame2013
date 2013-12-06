@@ -1,18 +1,10 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using TooLate.Model;
 using TooLate.Screens;
-using TooLateLibrary.Graphics;
 using TooLateLibrary.Timers;
-using TooLateLibrary.Animation;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Media;
 
 namespace TooLate
 {
@@ -27,20 +19,6 @@ namespace TooLate
         SpriteBatch spriteBatch;
 
         private bool _transition;
-
-        private GamePadState _gamePadState;
-        private KeyboardState _keyboardState;
-        private KeyboardState _oldKeyboardState;
-        private MouseState _mouseState;
-
-        private Player _player;
-
-        private ParallaxSideScroller _scroller;
-
-        /// <summary>
-        /// Stores the Countdown that will enable the game to auto-exit after N seconds
-        /// </summary>
-        private Countdown _countdown;
 
         #endregion
 
@@ -78,21 +56,11 @@ namespace TooLate
         {
             // Initializes the countdown, with 10 seconds delay,
             // triggering the EndGame method, and starting immediately
-            _countdown = new Countdown(TimeSpan.FromSeconds(60), EndGame, true);
+            //_countdown = new Countdown(TimeSpan.FromSeconds(60), EndGame, true);
 
             _transition = false;
 
             Components.Add(new StudioSplashScreen(this));
-            
-            _scroller = new ParallaxSideScroller(this, false, true);
-
-            _scroller.Add("Layers/Layer1");
-            _scroller.Add("Layers/Layer2");
-            _scroller.Add("Layers/Layer3");
-            _scroller.Add("Layers/Layer5");
-            _scroller.Add("Layers/Layer7");
-
-            //Components.Add(_scroller);
 
             base.Initialize();
         }
@@ -133,19 +101,6 @@ namespace TooLate
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-            _gamePadState = GamePad.GetState(PlayerIndex.One);
-            _keyboardState = Keyboard.GetState();
-            _mouseState = Mouse.GetState();
-
-            if (_keyboardState.IsKeyDown(Keys.Left) || _gamePadState.IsButtonDown(Buttons.LeftThumbstickLeft) || _gamePadState.IsButtonDown(Buttons.DPadLeft))
-            {
-                _scroller.MoveBy(new Vector2(14,0));
-            }
-            else if (_keyboardState.IsKeyDown(Keys.Right) || _gamePadState.IsButtonDown(Buttons.LeftThumbstickRight) || _gamePadState.IsButtonDown(Buttons.DPadRight))
-            {
-                _scroller.MoveBy(new Vector2(-14, 0));
-            }
-
             // Switch between methods when the game state change.
             switch (ScreenState.CurrentGameState)
             {
@@ -168,11 +123,9 @@ namespace TooLate
                         // Clear StudioSplashScreen's component when we switch to MENU.
                         Components.Clear();
 
-                        // Add Scroller's component after clear.
-                        Components.Add(_scroller);
-
-                        Components.Add(new Player(this));
-
+                        // Add Level's component after clear.
+                        Components.Add(new Level(this, 2000.0f, Components));
+                        
                         // Disable transition
                         _transition = false;
                     }
@@ -181,10 +134,10 @@ namespace TooLate
             }
 
             // Updates the countdown
-            _countdown.Update(gameTime);
+            //_countdown.Update(gameTime);
 
             // Show the time left in the windows's title bar
-            Window.Title = _countdown.Left.ToString();
+            //Window.Title = _countdown.Left.ToString();
 
             base.Update(gameTime);
         }
