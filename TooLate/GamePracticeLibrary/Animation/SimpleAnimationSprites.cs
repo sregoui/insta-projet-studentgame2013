@@ -55,6 +55,31 @@ namespace TooLateLibrary.Animation
             }
         }
 
+        /// <summary>
+        /// Gets a texture origin at the bottom center of each frame.
+        /// </summary>
+        public Vector2 Origin
+        {
+            get { return new Vector2(FrameWidth / 2.0f, FrameHeight); }
+        }
+
+        /// <summary>
+        /// Gets the width of a frame in the animation.
+        /// </summary>
+        public int FrameWidth
+        {
+            // Assume square frames.
+            get { return currentFrame.X; }
+        }
+
+        /// <summary>
+        /// Gets the height of a frame in the animation.
+        /// </summary>
+        public int FrameHeight
+        {
+            get { return currentFrame.Y; }
+        }
+
         #endregion
 
         #region Methods

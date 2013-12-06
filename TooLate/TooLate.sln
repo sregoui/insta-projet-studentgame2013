@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TooLateContent", "GamePract
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TooLateLibrary", "GamePracticeLibrary\TooLateLibrary.csproj", "{BA0436B5-F636-4390-A2B5-6A733E6135E2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestTooLateLibrary", "..\TestGamePracticeLibrary\TestTooLateLibrary.csproj", "{4E80F380-0C73-4075-AF96-4DE205B63261}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -27,6 +29,10 @@ Global
 		{BA0436B5-F636-4390-A2B5-6A733E6135E2}.Debug|x86.Build.0 = Debug|x86
 		{BA0436B5-F636-4390-A2B5-6A733E6135E2}.Release|x86.ActiveCfg = Release|x86
 		{BA0436B5-F636-4390-A2B5-6A733E6135E2}.Release|x86.Build.0 = Release|x86
+		{4E80F380-0C73-4075-AF96-4DE205B63261}.Debug|x86.ActiveCfg = Debug|x86
+		{4E80F380-0C73-4075-AF96-4DE205B63261}.Debug|x86.Build.0 = Debug|x86
+		{4E80F380-0C73-4075-AF96-4DE205B63261}.Release|x86.ActiveCfg = Release|x86
+		{4E80F380-0C73-4075-AF96-4DE205B63261}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

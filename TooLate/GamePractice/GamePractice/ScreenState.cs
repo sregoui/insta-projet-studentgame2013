@@ -19,6 +19,9 @@ namespace TooLate
             INGAME_1
         }
 
+        /// <summary>
+        /// Initialize the Game State with a Splash Screen.
+        /// </summary>
         private static GameState _currentGameState = GameState.SPLASH_SCREEN;
 
         #endregion
