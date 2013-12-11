@@ -23,6 +23,8 @@ namespace TooLate.Model
         private KeyboardState _oldKeyboardState;
         private MouseState _mouseState;
 
+        private bool _isStopping;
+
         private float _speed;
 
         /// <summary>
@@ -38,6 +40,7 @@ namespace TooLate.Model
         {
             _speed = 0.1f;
             _game = game;
+            IsStopping = false;
         }
 
         #endregion
@@ -48,6 +51,12 @@ namespace TooLate.Model
         public Point Position
         {
             get { return _animationRun.position; }
+        }
+
+        public bool IsStopping
+        {
+            get { return _isStopping; }
+            set { _isStopping = value; }
         }
 
         #endregion
@@ -69,7 +78,7 @@ namespace TooLate.Model
             });
 
             _animationWait.position.X = 0;
-            _animationWait.position.Y = 200;
+            _animationWait.position.Y = 220;
 
             _animationRun = new SimpleAnimationSprites(_game, new SimpleAnimationDefinition()
             {
@@ -121,22 +130,30 @@ namespace TooLate.Model
             _keyboardState = Keyboard.GetState();
             _mouseState = Mouse.GetState();
 
-            _animationRun.Update(gameTime);
+            if (!_isStopping)
+            {
+                _animationRun.Update(gameTime);
 
-            if (_keyboardState.IsKeyDown(Keys.Right) || _gamePadState.IsButtonDown(Buttons.LeftThumbstickRight) || _gamePadState.IsButtonDown(Buttons.DPadRight))
-            {
-                _animationRun.position.X--;
-            }
-            else if (_keyboardState.IsKeyDown(Keys.Left) || _gamePadState.IsButtonDown(Buttons.LeftThumbstickLeft) ||
-                     _gamePadState.IsButtonDown(Buttons.DPadLeft))
-            {
-                _animationRun.position.X = _animationRun.position.X+10;
+                if (_keyboardState.IsKeyDown(Keys.Right) || _gamePadState.IsButtonDown(Buttons.LeftThumbstickRight) || _gamePadState.IsButtonDown(Buttons.DPadRight))
+                {
+                    _animationRun.position.X--;
+                }
+                else if (_keyboardState.IsKeyDown(Keys.Left) || _gamePadState.IsButtonDown(Buttons.LeftThumbstickLeft) ||
+                         _gamePadState.IsButtonDown(Buttons.DPadLeft))
+                {
+                    _animationRun.position.X = _animationRun.position.X + 10;
+                }
+                else
+                {
+                    _animationRun.position.X++;
+                } 
             }
             else
             {
-                _animationRun.position.X++;
+                _animationWait.position.X = _animationRun.position.X;
+                _animationWait.Update(gameTime);
             }
-            
+
             base.Update(gameTime);
         }
 
@@ -146,7 +163,14 @@ namespace TooLate.Model
         /// <param name="gameTime">The current game time.</param>
         public override void Draw(GameTime gameTime)
         {
-            _animationRun.Draw(gameTime);
+            if (!_isStopping)
+            {
+                _animationRun.Draw(gameTime);
+            }
+            else
+            {
+                _animationWait.Draw(gameTime);
+            }
 
             base.Draw(gameTime);
         }

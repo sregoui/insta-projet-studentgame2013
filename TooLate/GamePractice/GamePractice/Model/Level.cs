@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using TooLateLibrary.Graphics;
@@ -17,8 +18,12 @@ namespace TooLate.Model
         private Player _player1;
         private Bus _bus;
 
+        private Texture2D _school;
+
         private SpriteFont _positionFont;
         private SpriteFont _defaultFont;
+
+        private SoundEffect _soundBusLeaving;
 
         private float _mapSize;
 
@@ -71,8 +76,15 @@ namespace TooLate.Model
             _scroller.Add("Layers/Layer5");
             _scroller.Add("Layers/Layer7");
 
+            _school = Content.Load<Texture2D>("Sprites/School/school");
+
+
+
             _positionFont = Content.Load<SpriteFont>("Font/Classement");
             _defaultFont = Content.Load<SpriteFont>("Font/Default");
+
+            _soundBusLeaving = Content.Load<SoundEffect>("Sound/bus-leaving");
+            _soundBusLeaving.Play();
 
             // Add components to the collection
             _components.Add(_scroller);
@@ -90,19 +102,23 @@ namespace TooLate.Model
             _keyboardState = Keyboard.GetState();
             _mouseState = Mouse.GetState();
 
-            CheckPosition();
-
-            if (_keyboardState.IsKeyDown(Keys.Left) || _gamePadState.IsButtonDown(Buttons.LeftThumbstickLeft) || _gamePadState.IsButtonDown(Buttons.DPadLeft))
+            if (_mapSize > 0)
             {
-                _scroller.MoveBy(new Vector2(_player1.Speed, 0));
-                _mapSize += 0.1f;   
-            }
-            else if (_keyboardState.IsKeyDown(Keys.Right) || _gamePadState.IsButtonDown(Buttons.LeftThumbstickRight) || _gamePadState.IsButtonDown(Buttons.DPadRight))
-            {
-                _scroller.MoveBy(new Vector2(_player1.Speed*-1, 0));
-                _mapSize -= 0.1f;
-            }
+                CheckPosition();
 
+                if (_keyboardState.IsKeyDown(Keys.Left) || _gamePadState.IsButtonDown(Buttons.LeftThumbstickLeft) ||
+                    _gamePadState.IsButtonDown(Buttons.DPadLeft))
+                {
+                    _scroller.MoveBy(new Vector2(_player1.Speed, 0));
+                    _mapSize += 0.1f;
+                }
+                else if (_keyboardState.IsKeyDown(Keys.Right) || _gamePadState.IsButtonDown(Buttons.LeftThumbstickRight) ||
+                         _gamePadState.IsButtonDown(Buttons.DPadRight))
+                {
+                    _scroller.MoveBy(new Vector2(_player1.Speed*-1, 0));
+                    _mapSize -= 0.1f;
+                }
+            }
 
             base.Update(gameTime);
         }
@@ -138,16 +154,38 @@ namespace TooLate.Model
 
             spriteBatch.Begin();
 
-            // Shows Position of player
-            Vector2 positionP1 = new Vector2(100, 550);
+            spriteBatch.Draw(_school, new Vector2((_mapSize * 100), 70), Color.White);
 
-            spriteBatch.DrawString(_positionFont, classement, positionP1, Color.Yellow);
+            // If you arrive at school
+            if (_mapSize <= 0.0f)
+            {
+                _bus.IsStopping = true;
+                _player1.IsStopping = true;
 
-            // Shows distance with school
-            Vector2 positionMap = new Vector2(800, 50);
+                string message = "You win";
 
-            spriteBatch.DrawString(_defaultFont, _mapSize.ToString("0000") + " Yards from School", positionMap, Color.White);
+                if (_player1.Classement == 2)
+                {
+                    message = "You loose";
+                }
 
+                // Shows message when you finish
+                Vector2 positionFinish = new Vector2(450, 300);
+
+                spriteBatch.DrawString(_defaultFont, message, positionFinish, Color.White);
+            }
+            else
+            {
+                // Shows Position of player
+                Vector2 positionP1 = new Vector2(100, 550);
+
+                spriteBatch.DrawString(_positionFont, classement, positionP1, Color.Yellow);
+
+                    // Shows distance with school
+                Vector2 positionMap = new Vector2(800, 50);
+
+                spriteBatch.DrawString(_defaultFont, _mapSize.ToString("0000") + " Yards from School", positionMap, Color.White);
+            }
 
             spriteBatch.End();
             base.Draw(gameTime);

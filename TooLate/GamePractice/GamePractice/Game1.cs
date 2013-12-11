@@ -1,4 +1,5 @@
 using System;
+using Microsoft.Xna.Framework.Media;
 using TooLate.Model;
 using TooLate.Screens;
 using TooLateLibrary.Timers;
@@ -17,6 +18,8 @@ namespace TooLate
 
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+
+        private Song _music1;
 
         private bool _transition;
 
@@ -58,9 +61,14 @@ namespace TooLate
             // triggering the EndGame method, and starting immediately
             //_countdown = new Countdown(TimeSpan.FromSeconds(60), EndGame, true);
 
+            // Repeat the music
+            MediaPlayer.IsRepeating = true;
+
             _transition = false;
 
             Components.Add(new StudioSplashScreen(this));
+
+            
 
             base.Initialize();
         }
@@ -78,8 +86,11 @@ namespace TooLate
         {
             // Créer un SpriteBatch, qui peut être utilisé pour dessiner des textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            _music1 = Content.Load<Song>("Music/song1");
 
-            // TODO: utilisez this.Content pour charger votre contenu de jeu ici
+            // Play music 1
+            MediaPlayer.Play(_music1);
+
         }
 
         /// <summary>
@@ -124,7 +135,7 @@ namespace TooLate
                         Components.Clear();
 
                         // Add Level's component after clear.
-                        Components.Add(new Level(this, 2000.0f, Components));
+                        Components.Add(new Level(this, 100.0f, Components));
                         
                         // Disable transition
                         _transition = false;
