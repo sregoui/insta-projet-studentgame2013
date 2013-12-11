@@ -1,6 +1,7 @@
 ﻿using System;
 using System.CodeDom;
 using System.Net.Mime;
+using Microsoft.Xna.Framework.Audio;
 using TooLateLibrary.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -31,6 +32,8 @@ namespace TooLate.Screens
         /// Stores the path of the splash screen size curve asset.
         /// </summary>
         private const string _splashScreenSizeCurvePath = "Transitions/SplashScreenSize";
+
+        private SoundEffect _alarm;
 
         #endregion
 
@@ -126,6 +129,8 @@ namespace TooLate.Screens
             // Load the splash screen texture to memory.
             _texture = Content.Load<Texture2D>(_splashScreenTexturePath);
 
+            _alarm = Content.Load<SoundEffect>("Sound/alarm-clock");
+
             // Load the opacity transition curve data.
             _opacity = new Easing<Color>(new ColorInterpolation(Color.Transparent, Color.White), Content.Load<Curve>(_splashScreenOpacityCurvePath));
             _opacity.Start();
@@ -168,6 +173,11 @@ namespace TooLate.Screens
 
         public override void Update(GameTime gameTime)
         {
+            SoundEffectInstance instance = _alarm.CreateInstance();
+            instance.Volume = 0.1f;
+
+            //instance.Play();;
+
             // Update the time frame of the transitions.
             _opacity.Update(gameTime);
             _size.Update(gameTime);

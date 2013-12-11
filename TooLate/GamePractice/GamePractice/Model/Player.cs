@@ -59,6 +59,7 @@ namespace TooLate.Model
 
         private bool _isAlive;
         private bool _isOnGround;
+        private bool _isStopping;
 
         private Vector2 _position;
         private Vector2 _velocity;
@@ -111,7 +112,8 @@ namespace TooLate.Model
             _speed = MinimumSpeed;
             _accelerate = false;
             _finishCountdown = true;
-            
+            IsStopping = false;
+
         }
 
         #endregion
@@ -165,6 +167,12 @@ namespace TooLate.Model
         {
             get { return _classement; }
             set { _classement = value; }
+        }
+
+        public bool IsStopping
+        {
+            get { return _isStopping; }
+            set { _isStopping = value; }
         }
 
         #endregion
@@ -330,66 +338,72 @@ namespace TooLate.Model
 
             _oldKeyboardState = _keyboardState;
 
-            if (_finishCountdown)
+            if (!IsStopping)
             {
-                _timerDecelerate.Start();
-                _finishCountdown = false;
-            }
-
-            if (_timerDecelerate.Elapsed == TimeSpan.FromSeconds(1))
-            {
-                CalculateDecelerate();    
-            }
-                
-                
-
-            if (_keyboardState.IsKeyDown(Keys.Space) || _gamePadState.IsButtonDown(Buttons.A))
-            {
-                //_animationJumpLeft.Update(gameTime);
-                //_currentAnimation = _animationJumpLeft;
-                if (_accelerate == false)
+                if (_finishCountdown)
                 {
-                    _timer.Start();
-                    _accelerate = true;
+                    _timerDecelerate.Start();
+                    _finishCountdown = false;
                 }
+
+                if (_timerDecelerate.Elapsed == TimeSpan.FromSeconds(1))
+                {
+                    CalculateDecelerate();
+                }
+
+
+                if (_keyboardState.IsKeyDown(Keys.Space) || _gamePadState.IsButtonDown(Buttons.A))
+                {
+                    //_animationJumpLeft.Update(gameTime);
+                    //_currentAnimation = _animationJumpLeft;
+                    if (_accelerate == false)
+                    {
+                        _timer.Start();
+                        _accelerate = true;
+                    }
+                    else
+                    {
+                        CalculateSpeed(_timer);
+                        _timer.Stop();
+                        _timer.Reset();
+                        _accelerate = false;
+                    }
+
+
+                    _animationRunRight.Update(gameTime);
+                }
+                // If the player goes on right.
+                else if (_keyboardState.IsKeyDown(Keys.Right) || _gamePadState.IsButtonDown(Buttons.LeftThumbstickRight) || _gamePadState.IsButtonDown(Buttons.DPadRight))
+                {
+                    _direction = 0;
+                    _animationRunRight.Update(gameTime);
+                    _currentAnimation = _animationRunRight;
+                }
+                // If the player goes on left.
+                else if (_keyboardState.IsKeyDown(Keys.Left) || _gamePadState.IsButtonDown(Buttons.LeftThumbstickLeft) || _gamePadState.IsButtonDown(Buttons.DPadLeft))
+                {
+                    _direction = 1;
+                    _animationRunLeft.Update(gameTime);
+                    _currentAnimation = _animationRunLeft;
+                }
+                // Else, the character wait
                 else
                 {
-                    CalculateSpeed(_timer);
-                    _timer.Stop();
-                    _timer.Reset();
-                    _accelerate = false;
+                    if (_direction == 0)
+                    {
+                        _animationWait.Update(gameTime);
+                        _currentAnimation = _animationWait;
+                    }
+                    else if (_direction == 1)
+                    {
+                        _animationWaitLeft.Update(gameTime);
+                        _currentAnimation = _animationWaitLeft;
+                    }
                 }
-
-               
-                _animationRunRight.Update(gameTime);
             }
-            // If the player goes on right.
-            else if (_keyboardState.IsKeyDown(Keys.Right) || _gamePadState.IsButtonDown(Buttons.LeftThumbstickRight) || _gamePadState.IsButtonDown(Buttons.DPadRight))
-            {
-                _direction = 0;
-                _animationRunRight.Update(gameTime);
-                _currentAnimation = _animationRunRight;
-            }
-            // If the player goes on left.
-            else if (_keyboardState.IsKeyDown(Keys.Left) || _gamePadState.IsButtonDown(Buttons.LeftThumbstickLeft) || _gamePadState.IsButtonDown(Buttons.DPadLeft))
-            {
-                _direction = 1;
-                _animationRunLeft.Update(gameTime);
-                _currentAnimation = _animationRunLeft;
-            }
-            // Else, the character wait
             else
             {
-                if (_direction == 0)
-                {
-                    _animationWait.Update(gameTime);
-                    _currentAnimation = _animationWait;
-                }
-                else if (_direction == 1)
-                {
-                    _animationWaitLeft.Update(gameTime);
-                    _currentAnimation = _animationWaitLeft;
-                }
+                _animationWait.Update(gameTime);
             }
 
             base.Update(gameTime);
@@ -407,32 +421,39 @@ namespace TooLate.Model
 
             Renderer.Begin();
 
-            if (_keyboardState.IsKeyDown(Keys.Space) || _gamePadState.IsButtonDown(Buttons.A))
+            if (!IsStopping)
             {
-                //_animationJumpLeft.Draw(gameTime, false);
-                _animationRunRight.Draw(gameTime, false);
+                if (_keyboardState.IsKeyDown(Keys.Space) || _gamePadState.IsButtonDown(Buttons.A))
+                {
+                    //_animationJumpLeft.Draw(gameTime, false);
+                    _animationRunRight.Draw(gameTime, false);
+                }
+                // If the player goes on right.
+                else if (_keyboardState.IsKeyDown(Keys.Right) || _gamePadState.IsButtonDown(Buttons.LeftThumbstickRight) || _gamePadState.IsButtonDown(Buttons.DPadRight))
+                {
+                    _animationRunRight.Draw(gameTime, false);
+                }
+                // If the player goes on left.
+                else if (_keyboardState.IsKeyDown(Keys.Left) || _gamePadState.IsButtonDown(Buttons.LeftThumbstickLeft) || _gamePadState.IsButtonDown(Buttons.DPadLeft))
+                {
+                    _animationRunLeft.Draw(gameTime, false);
+                }
+                // Else, the character wait
+                else
+                {
+                    if (_direction == 0)
+                    {
+                        _animationWait.Draw(gameTime, false);
+                    }
+                    else if (_direction == 1)
+                    {
+                        _animationWaitLeft.Draw(gameTime, false);
+                    }
+                }
             }
-            // If the player goes on right.
-            else if (_keyboardState.IsKeyDown(Keys.Right) || _gamePadState.IsButtonDown(Buttons.LeftThumbstickRight) || _gamePadState.IsButtonDown(Buttons.DPadRight))
-            {
-                _animationRunRight.Draw(gameTime, false);
-            }
-            // If the player goes on left.
-            else if (_keyboardState.IsKeyDown(Keys.Left) || _gamePadState.IsButtonDown(Buttons.LeftThumbstickLeft) || _gamePadState.IsButtonDown(Buttons.DPadLeft))
-            {
-                _animationRunLeft.Draw(gameTime, false);
-            }
-            // Else, the character wait
             else
             {
-                if (_direction == 0)
-                {
-                    _animationWait.Draw(gameTime, false);
-                }
-                else if (_direction == 1)
-                {
-                    _animationWaitLeft.Draw(gameTime, false);
-                }
+                _animationWait.Draw(gameTime, false);
             }
 
             Renderer.End();
