@@ -17,5 +17,3 @@ Diagramme de classe
 https://www.dropbox.com/s/r38cmwtc1qfg6dc/DiagrammeClasses_1.pdf
 
 PowerPoint Soutenance
-
-https://dl.dropboxusercontent.com/u/109322628/InstaProjet/Novembre2013-C%23/UML/Pr%C3%A9sentation1.pptx
